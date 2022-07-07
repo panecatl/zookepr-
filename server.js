@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+// calling on data in the animals.json
+const { animals } = require('./data /animals.json');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -8,9 +11,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // parse iincoming json data
 app.use(express.json());
-
-// calling on data in the animals.json
-const { animals } = require('./data /animals.json');
 
 // function to create a json from a query parameter
 function filterByQuery(query, animalsArray) {
@@ -69,7 +69,7 @@ function createNewAnimal(body, animalsArray) {
         JSON.stringify({ animals: animalsArray }, null, 2)
     );
     return animal;
-};
+}
 
 function validateAnimal(animal) {
     if (!animal.name || typeof animal.name !== 'string') {
@@ -120,5 +120,5 @@ app.post('/api/animals', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}`)
+    console.log(`API server now on port ${PORT}!`)
 });
