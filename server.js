@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 // calling on data in the animals.json
-const { animals } = require('./data /animals.json');
+const { animals } = require('./data/animals');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
